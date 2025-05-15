@@ -6,6 +6,7 @@ import Metrics from "@/components/Metrics";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
+import SocialFollow from "@/components/SocialFollow";
 import Footer from "@/components/Footer";
 import ReferralModal from "@/components/ReferralModal";
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Testimonials />
       <About />
       <FAQ />
+      <SocialFollow />
       <Footer />
       
       <ReferralModal 
