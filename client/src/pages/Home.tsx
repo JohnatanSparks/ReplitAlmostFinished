@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import SocialFollow from "@/components/SocialFollow";
 import Footer from "@/components/Footer";
 import ReferralModal from "@/components/ReferralModal";
+import FullPageVideo from "@/components/FullPageVideo";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +24,9 @@ export default function Home() {
   
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Single background video that spans across all relevant sections */}
+      <FullPageVideo />
+      
       <Navbar onOpenModal={openModal} />
       <Hero onOpenFreeModal={openModal} onOpenPremiumModal={openModal} />
       <HowItWorks />

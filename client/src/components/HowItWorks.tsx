@@ -1,14 +1,7 @@
-import VideoBackground from "./VideoBackground";
-
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="relative py-20 text-white">
-      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-      
-      {/* Using the same VideoBackground component for consistent video sync */}
-      <div className="absolute inset-0 z-[-1]">
-        <VideoBackground />
-      </div>
+      {/* No need for video or background here as it's handled by FullPageVideo component */}
       
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">How it works?</h2>

@@ -1,5 +1,3 @@
-import VideoBackground from "./VideoBackground";
-
 interface HeroProps {
   onOpenFreeModal: () => void;
   onOpenPremiumModal: () => void;
@@ -8,12 +6,7 @@ interface HeroProps {
 export default function Hero({ onOpenFreeModal, onOpenPremiumModal }: HeroProps) {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-      
-      {/* Using the shared VideoBackground component for consistent video sync */}
-      <div className="absolute inset-0 z-0">
-        <VideoBackground />
-      </div>
+      {/* No need for video or background here as it's handled by FullPageVideo component */}
       
       <div className="container mx-auto px-4 z-20 relative">
         <h1 className="text-5xl md:text-6xl font-bold mb-4">Stakepads</h1>
