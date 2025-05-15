@@ -1,3 +1,5 @@
+import VideoBackground from "./VideoBackground";
+
 interface HeroProps {
   onOpenFreeModal: () => void;
   onOpenPremiumModal: () => void;
@@ -8,18 +10,9 @@ export default function Hero({ onOpenFreeModal, onOpenPremiumModal }: HeroProps)
     <section id="hero" className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       
-      {/* Background video */}
+      {/* Using the shared VideoBackground component for consistent video sync */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/assets/3d abstract waves black background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <VideoBackground />
       </div>
       
       <div className="container mx-auto px-4 z-20 relative">

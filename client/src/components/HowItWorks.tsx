@@ -1,20 +1,13 @@
+import VideoBackground from "./VideoBackground";
+
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="relative py-20 text-white">
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
       
-      {/* Background video */}
+      {/* Using the same VideoBackground component for consistent video sync */}
       <div className="absolute inset-0 z-[-1]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/assets/3d abstract waves black background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <VideoBackground />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
