@@ -22,13 +22,13 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           <div className="flex items-center">
             <div className="mr-3">
               <img 
-                src="https://raw.githubusercontent.com/your-username/your-repo/main/secure-padlock-logo-for-fintech-company.png" 
+                src="/assets/stakepads-logo.jpg" 
                 alt="Stakepads Logo" 
                 className="h-16"
               />
             </div>
             <Link href="/">
-              <span className="text-2xl font-bold text-white cursor-pointer">Stakepads</span>
+              <span className="text-2xl font-bold text-white cursor-pointer sr-only">Stakepads</span>
             </Link>
           </div>
           

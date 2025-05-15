@@ -16,7 +16,7 @@ export default function Page1() {
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 mb-8 md:mb-0">
                 <img 
-                  src="https://raw.githubusercontent.com/your-username/your-repo/main/chatgpt-image-may-14-2025-04-30-37-am.png" 
+                  src="/assets/solanachart.jpg" 
                   alt="Setup Instructions" 
                   className="w-full max-w-md mx-auto"
                 />

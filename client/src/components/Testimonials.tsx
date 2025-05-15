@@ -1,17 +1,17 @@
 export default function Testimonials() {
   const testimonials = [
     {
-      image: "https://raw.githubusercontent.com/your-username/your-repo/main/cal.png",
+      image: "/assets/cam.png",
       name: "Cam",
       text: "I'm just a degen flipping meme coins, but this referral system is straight alpha. Maxed out my Axiom account in a month without shilling, just plugged in my link and let it run."
     },
     {
-      image: "https://raw.githubusercontent.com/your-username/your-repo/main/sol.mist.png",
+      image: "/assets/sol.mist.png",
       name: "sol.mist",
       text: "As the developer behind axiom.trade, I can confidently recommend Stakepads. It delivers real users, respects our platform's integrity, and helps grow the community the right way."
     },
     {
-      image: "https://raw.githubusercontent.com/your-username/your-repo/main/cal.trading.png",
+      image: "/assets/cal.trading.png",
       name: "cal.trading",
       text: "As the co-founder of axiom.trade, I've seen a lot of referral schemes, but Stakepads stands out. It stays compliant with our values and makes growth effortless for partners."
     }
