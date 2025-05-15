@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SocialFollow from "@/components/SocialFollow";
+import BookmarkletButton from "@/components/BookmarkletButton";
 
 export default function Page1() {
   // This component represents the page1.html content
@@ -36,9 +37,7 @@ export default function Page1() {
                   click the bookmark and your benefits will activate immediately.
                 </p>
                 <div className="mt-4">
-                  <button className="px-6 py-3 bg-black text-white rounded-md inline-block hover:bg-gray-800 transition-smooth">
-                    Get referral
-                  </button>
+                  <BookmarkletButton title="Get referral" />
                 </div>
               </div>
             </div>
