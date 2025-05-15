@@ -35,26 +35,27 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return (
     <div 
       className={cn(
-        "fixed inset-0 z-50 transition-opacity",
+        "fixed inset-0 z-50 transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
       aria-hidden={!isOpen}
     >
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        className={cn(
+          "fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out",
+          isOpen ? "opacity-100" : "opacity-0"
+        )}
         onClick={onClose}
       />
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
           <div 
             className={cn(
-              "bg-[#d3d3d3] text-black rounded-lg shadow-lg p-6 max-w-md w-full mx-auto transform transition-all",
-              isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0",
+              "bg-[#d3d3d3] text-black rounded-lg shadow-lg p-6 max-w-md w-full mx-auto transform transition-all duration-300 ease-out",
+              isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4",
               className
             )}
             onClick={(e) => e.stopPropagation()}

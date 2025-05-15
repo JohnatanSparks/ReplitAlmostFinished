@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { scrollToElement } from "@/lib/utils";
 
 interface NavbarProps {
   onOpenModal: () => void;
@@ -7,6 +8,12 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenModal }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Handle smooth scrolling with improved animation
+  const handleNavClick = (elementId: string) => {
+    setIsMenuOpen(false);
+    scrollToElement(elementId);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-gray-800/70 backdrop-blur-sm rounded-b-lg">
@@ -40,12 +47,27 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </div>
           
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#how-it-works" className="text-white hover:text-gray-300 transition">How it works</a>
-            <a href="#testimonials" className="text-white hover:text-gray-300 transition">Testimonials</a>
-            <a href="#faq" className="text-white hover:text-gray-300 transition">FAQ</a>
+            <button 
+              onClick={() => handleNavClick('how-it-works')} 
+              className="text-white hover:text-gray-300 transition-smooth"
+            >
+              How it works
+            </button>
+            <button 
+              onClick={() => handleNavClick('testimonials')} 
+              className="text-white hover:text-gray-300 transition-smooth"
+            >
+              Testimonials
+            </button>
+            <button 
+              onClick={() => handleNavClick('faq')} 
+              className="text-white hover:text-gray-300 transition-smooth"
+            >
+              FAQ
+            </button>
             <button 
               onClick={onOpenModal}
-              className="px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-gray-800 transition">
+              className="px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-gray-800 transition-smooth">
               Try for free
             </button>
           </div>
@@ -53,33 +75,30 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
         
         {/* Mobile menu */}
         <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden mt-4 pb-4`}>
-          <a 
-            href="#how-it-works" 
-            className="block py-2 text-white hover:text-gray-300"
-            onClick={() => setIsMenuOpen(false)}
+          <button 
+            onClick={() => handleNavClick('how-it-works')}
+            className="block w-full text-left py-2 text-white hover:text-gray-300 transition-smooth"
           >
             How it works
-          </a>
-          <a 
-            href="#testimonials" 
-            className="block py-2 text-white hover:text-gray-300"
-            onClick={() => setIsMenuOpen(false)}
+          </button>
+          <button 
+            onClick={() => handleNavClick('testimonials')}
+            className="block w-full text-left py-2 text-white hover:text-gray-300 transition-smooth"
           >
             Testimonials
-          </a>
-          <a 
-            href="#faq" 
-            className="block py-2 text-white hover:text-gray-300"
-            onClick={() => setIsMenuOpen(false)}
+          </button>
+          <button
+            onClick={() => handleNavClick('faq')}
+            className="block w-full text-left py-2 text-white hover:text-gray-300 transition-smooth"
           >
             FAQ
-          </a>
+          </button>
           <button 
             onClick={() => {
               setIsMenuOpen(false);
               onOpenModal();
             }}
-            className="mt-2 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-gray-800 transition">
+            className="mt-2 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-gray-800 transition-smooth">
             Try for free
           </button>
         </div>
