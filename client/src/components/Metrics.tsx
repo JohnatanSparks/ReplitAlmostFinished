@@ -6,7 +6,7 @@ export default function Metrics() {
   ];
 
   return (
-    <section className="py-16 text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
+    <section className="py-16 text-white bg-black">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {metrics.map((metric, index) => (

@@ -10,14 +10,16 @@ export default function Hero({ onOpenFreeModal, onOpenPremiumModal }: HeroProps)
       
       {/* Background video */}
       <div className="absolute inset-0 z-0">
-        {/* Using an iframe with autoplay for the YouTube video background */}
-        <iframe
-          src="https://www.youtube.com/embed/G7GSu_MQM7Y?autoplay=1&mute=1&loop=1&playlist=G7GSu_MQM7Y&controls=0&showinfo=0&vq=hd1080&rel=0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-          title="Background Video"
-        ></iframe>
+        >
+          <source src="/assets/3d abstract waves black background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
       
       <div className="container mx-auto px-4 z-20 relative">
