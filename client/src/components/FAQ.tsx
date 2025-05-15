@@ -25,8 +25,8 @@ export default function FAQ() {
         
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-8 p-5 rounded-lg border border-[#d3d3d3] bg-gray-50 shadow-sm">
-              <h3 className="text-xl font-bold mb-3 pb-2 border-b border-[#d3d3d3]">{faq.question}</h3>
+            <div key={index} className="mb-8 p-5 rounded-lg border-4 border-[#d3d3d3] bg-gray-50 shadow-sm">
+              <h3 className="text-xl font-bold mb-3 pb-2 border-b-2 border-[#d3d3d3]">{faq.question}</h3>
               <p className="text-gray-700">{faq.answer}</p>
             </div>
           ))}
