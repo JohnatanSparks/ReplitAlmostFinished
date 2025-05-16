@@ -1,3 +1,4 @@
+
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,7 +7,6 @@ import BookmarkletButton from "@/components/BookmarkletButton";
 
 export default function Page1() {
   return (
-    <div className="fade-in">
     <div className="min-h-screen flex flex-col">
       <Navbar onOpenModal={() => {}} />
       
@@ -44,7 +44,6 @@ export default function Page1() {
           </div>
         </section>
         
-        {/* Using the same SocialFollow component as the home page */}
         <SocialFollow />
       </main>
       
