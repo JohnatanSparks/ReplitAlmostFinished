@@ -31,8 +31,19 @@ export default function ReferralModal({ isOpen, onClose }: ReferralModalProps) {
     e.preventDefault();
     
     if (validateReferral(referralLink)) {
-      // Navigate immediately without animation
-      navigate('/startnow');
+      // Show loading animation
+      document.body.style.overflow = 'hidden';
+      const loadingEl = document.createElement('div');
+      loadingEl.className = 'fixed inset-0 bg-black z-50 flex items-center justify-center';
+      loadingEl.innerHTML = '<div class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>';
+      document.body.appendChild(loadingEl);
+      
+      // Navigate after brief delay
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        loadingEl.remove();
+        navigate('/startnow');
+      }, 800);
     } else {
       // Invalid referral link, show error
       setError(true);

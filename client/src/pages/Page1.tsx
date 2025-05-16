@@ -7,7 +7,7 @@ import BookmarkletButton from "@/components/BookmarkletButton";
 
 export default function Page1() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col fade-in">
       <Navbar onOpenModal={() => {}} />
       
       <main className="flex-grow pt-24">
