@@ -22,7 +22,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           <div className="flex items-center">
             <div className="mr-3">
               <img 
-                src="/assets/stakepads-logo.jpg" 
+                src="/assets/transparentstakepadslogo.png" 
                 alt="Stakepads Logo" 
                 className="h-16"
               />
