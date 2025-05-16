@@ -20,7 +20,16 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
       <div className="container mx-auto px-4 py-2">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <div className="mr-3">
+            <div 
+              className="mr-3 cursor-pointer" 
+              onClick={() => {
+                if (window.location.pathname === '/startnow') {
+                  window.location.href = '/';
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+            >
               <img 
                 src="/assets/transparentstakepadslogo.png" 
                 alt="Stakepads Logo" 
