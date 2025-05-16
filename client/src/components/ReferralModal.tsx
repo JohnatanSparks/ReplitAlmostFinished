@@ -41,10 +41,10 @@ export default function ReferralModal({ isOpen, onClose }: ReferralModalProps) {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} className="bg-black border-2 border-white text-white">
       <div>
-        <h2 className="text-xl font-bold mb-2">Referral Link Required</h2>
-        <p className="mb-4">
+        <h2 className="text-xl font-bold mb-2 text-white">Referral Link Required</h2>
+        <p className="mb-4 text-white">
           Enter your complete referral link, including the full URL, to continue. 
           Make sure it's accurate to ensure proper tracking.
         </p>
@@ -56,7 +56,7 @@ export default function ReferralModal({ isOpen, onClose }: ReferralModalProps) {
             onChange={(e) => setReferralLink(e.target.value)}
             placeholder="https://axiom.trade/@referral"
             className={cn(
-              "w-full p-3 bg-[#a9a9a9] border border-gray-300 rounded mb-4 focus:outline-none",
+              "w-full p-3 bg-black border border-white rounded mb-4 focus:outline-none text-white",
               error && "shake border-red-500 border-2"
             )}
             required

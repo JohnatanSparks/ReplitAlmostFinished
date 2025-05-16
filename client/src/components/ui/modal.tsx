@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
         <div className="flex min-h-full items-center justify-center p-4">
           <div 
             className={cn(
-              "bg-[#d3d3d3] text-black rounded-lg shadow-lg p-6 max-w-md w-full mx-auto transform transition-all duration-300 ease-out",
+              "bg-black text-white rounded-lg shadow-lg p-6 max-w-md w-full mx-auto transform transition-all duration-300 ease-out",
               isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4",
               className
             )}
