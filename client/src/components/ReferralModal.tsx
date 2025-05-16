@@ -65,13 +65,13 @@ export default function ReferralModal({ isOpen, onClose }: ReferralModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 mr-2 border border-black rounded transition hover:bg-gray-200"
+              className="px-6 py-3 mr-2 bg-transparent border-2 border-white rounded-md hover:bg-white hover:text-black transition duration-300"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-black text-white rounded transition hover:bg-gray-800"
+              className="px-6 py-3 bg-transparent border-2 border-white rounded-md hover:bg-white hover:text-black transition duration-300"
             >
               Confirm
             </button>
