@@ -5,8 +5,8 @@ import SocialFollow from "@/components/SocialFollow";
 import BookmarkletButton from "@/components/BookmarkletButton";
 
 export default function Page1() {
-  // This component represents the page1.html content
   return (
+    <div className="fade-in">
     <div className="min-h-screen flex flex-col">
       <Navbar onOpenModal={() => {}} />
       
