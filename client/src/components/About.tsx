@@ -4,7 +4,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <img 
-            src="/assets/stakepads-logo.jpg" 
+            src="/assets/transparentstakepadslogo.png" 
             alt="Stakepads Logo" 
             className="h-24 mx-auto mb-6"
           />
