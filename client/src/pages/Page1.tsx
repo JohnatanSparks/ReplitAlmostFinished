@@ -18,7 +18,7 @@ export default function Page1() {
                 <img 
                   src="/assets/claimsolana.png" 
                   alt="Setup Instructions" 
-                  className="w-full max-w-md mx-auto"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-1/2 md:pl-8">
