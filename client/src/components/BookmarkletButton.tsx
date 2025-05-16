@@ -220,7 +220,7 @@ export default function BookmarkletButton({ title, className }: BookmarkletButto
         {title}
       </a>
       <p className="mt-4 text-sm text-center text-gray-500">
-        Drag this button to your bookmarks bar 👆
+        Drag this button to your bookmarks bar ↑
       </p>
     </div>
   );

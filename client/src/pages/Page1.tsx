@@ -16,7 +16,7 @@ export default function Page1() {
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 mb-8 md:mb-0">
                 <img 
-                  src="/assets/solanachart.jpg" 
+                  src="/assets/claimsolana.png" 
                   alt="Setup Instructions" 
                   className="w-full max-w-md mx-auto"
                 />
