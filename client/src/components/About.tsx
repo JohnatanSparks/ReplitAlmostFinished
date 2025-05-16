@@ -3,6 +3,11 @@ export default function About() {
     <section id="about" className="py-16 bg-black text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
+          <img 
+            src="/assets/stakepads-logo.jpg" 
+            alt="Stakepads Logo" 
+            className="h-24 mx-auto mb-6"
+          />
           <h2 className="text-4xl font-bold mb-8">About Stakepads</h2>
           
           <p className="text-lg mb-6">
