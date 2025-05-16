@@ -7,12 +7,12 @@ export default function Testimonials() {
     },
     {
       image: "/assets/sol.mist.png",
-      name: "sol.mist",
+      name: "Mist",
       text: "As the developer behind axiom.trade, I can confidently recommend Stakepads. It delivers real users, respects our platform's integrity, and helps grow the community the right way."
     },
     {
       image: "/assets/cal.trading.png",
-      name: "cal.trading",
+      name: "Cal",
       text: "As the co-founder of axiom.trade, I've seen a lot of referral schemes, but Stakepads stands out. It stays compliant with our values and makes growth effortless for partners."
     }
   ];
