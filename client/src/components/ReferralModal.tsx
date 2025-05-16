@@ -31,8 +31,12 @@ export default function ReferralModal({ isOpen, onClose }: ReferralModalProps) {
     e.preventDefault();
     
     if (validateReferral(referralLink)) {
-      // Valid referral link, redirect to page1.html
-      navigate('/page1.html');
+      // Add fade-out animation to body
+      document.body.classList.add('fade-out');
+      // Wait for animation to complete before redirecting
+      setTimeout(() => {
+        navigate('/page1.html');
+      }, 800);
     } else {
       // Invalid referral link, show error
       setError(true);
