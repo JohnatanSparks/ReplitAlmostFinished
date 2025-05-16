@@ -13,7 +13,7 @@ export default function Page1() {
       <main className="flex-grow pt-24">
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="flex flex-col md:flex-row items-start">
               <div className="md:w-1/2 mb-8 md:mb-0">
                 <img 
                   src="/assets/claimsolana.png" 
